@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const withDB = async (operations, res) => {
     try {
-        const client = await MongoClient.connect('mongodb+srv://tsford:Q8VHVT6v0CQjCm8N@learningapplicationdev.njacl.mongodb.net/my-blog?retryWrites=true&w=majority', { useNewUrlParser: true });
+        const client = await MongoClient.connect(process.env.DB_URL, { useNewUrlParser: true });
         const db = client.db('my-blog');
 
         await operations(db);
